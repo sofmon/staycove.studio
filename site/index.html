@@ -62,8 +62,8 @@
     .hero img{position:relative;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
     .hero-backdrop{display:none}
     .hero::after{
-      content:"";position:absolute;inset:auto 0 0 0;height:36%;
-      background:linear-gradient(to bottom, transparent, var(--ink));
+      content:"";position:absolute;inset:auto 0 0 0;height:38%;
+      background:linear-gradient(to bottom, transparent, var(--ink) 90%);
     }
     @media (orientation:portrait) and (max-width:47.9rem){
       .hero{height:auto;aspect-ratio:4/5;max-height:none}
@@ -74,7 +74,7 @@
       .hero img{object-fit:contain;object-position:center}
       .hero-backdrop{
         display:block;position:absolute;inset:-4%;
-        background:url('/assets/hero.jpg?v=2') center/cover;
+        background:url('/assets/hero.jpg?v=3') center/cover;
         filter:blur(28px) brightness(.72) saturate(1.05);
       }
     }
@@ -202,8 +202,8 @@
   <header class="hero">
     <h1 class="sr-only">Stay Cove Studio</h1>
     <div class="hero-backdrop" aria-hidden="true"></div>
-    <img src="/assets/hero.jpg?v=2"
-         srcset="/assets/hero.jpg?v=2 1536w, /assets/hero-2x.jpg?v=2 3072w"
+    <img src="/assets/hero.jpg?v=3"
+         srcset="/assets/hero.jpg?v=3 1536w, /assets/hero-2x.jpg?v=3 3072w"
          sizes="100vw" fetchpriority="high" width="1536" height="1024"
          alt="A crescent moon cradling a rocky cove island with pine trees, painted above a quiet seaside village at sunset, with a lighthouse in the distance.">
   </header>
