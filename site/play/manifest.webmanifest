@@ -1,0 +1,30 @@
+{
+  "name": "Slither Orbit",
+  "short_name": "Slither Orbit",
+  "description": "A high-speed survival snake game in a circular gravity-defying arena. Compete against bots, grow by eating celestial energy, and dominate the leaderboard.",
+  "start_url": "/play/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/play/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/play/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/play/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
