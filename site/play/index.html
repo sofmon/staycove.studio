@@ -1,31 +1,36 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#020617" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="manifest" href="/play/manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="/play/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Slither Orbit" />
-    <title>Slither Orbit</title>
-    <meta name="description" content="Play Slither Orbit free in your browser — a high-speed survival snake game in a circular, gravity-defying arena. No ads, no tracking, no sign-up. By Stay Cove Studio." />
-    <link rel="canonical" href="https://staycove.studio/play/" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/play/icon-192.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Slither Orbit — play in your browser" />
-    <meta property="og:description" content="A high-speed survival snake game in a circular, gravity-defying arena. Dodge the bots and outlast them all." />
-    <meta property="og:url" content="https://staycove.studio/play/" />
-    <meta property="og:image" content="https://staycove.studio/assets/og-play.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <script type="module" crossorigin src="/play/assets/index-DQN03dYZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/play/assets/index-CKPt_Con.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moved — Slither Orbit</title>
+  <link rel="canonical" href="https://staycove.studio/games/slither-orbit/">
+  <meta http-equiv="refresh" content="0; url=/games/slither-orbit/">
+  <meta name="theme-color" content="#0c1124">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <style>
+    @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/cinzel-latin-700-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin-400-normal.woff2') format('woff2')}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#0c1124;color:#f1e5c8;font-family:'Inter',system-ui,sans-serif;min-height:100svh;display:grid;place-items:center;text-align:center;padding:2rem}
+    h1{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.3rem,4vw,1.8rem);letter-spacing:.06em;margin-bottom:.75rem}
+    p{color:#aab2c9;margin-bottom:2rem}
+    a{display:inline-block;border-radius:.55rem;background:linear-gradient(to bottom,#eec584,#d9a45f);color:#231607;text-decoration:none;font-family:'Cinzel',serif;font-weight:700;letter-spacing:.1em;padding:.85rem 1.7rem}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>This page has moved</h1>
+    <p>Slither Orbit now lives at a new address.</p>
+    <a href="/games/slither-orbit/">Continue to Slither Orbit</a>
+  </main>
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.getRegistrations().then(function (rs) {
+        rs.forEach(function (r) { if (r.scope.indexOf('/play/') !== -1) r.unregister(); });
+      }).catch(function () {});
+    }
+    location.replace('/games/slither-orbit/');
+  </script>
+</body>
 </html>
-

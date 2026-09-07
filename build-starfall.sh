@@ -1,5 +1,5 @@
 #!/bin/bash
-# Rebuild Starfall Vanguard (a sibling checkout, or $STARFALL_DIR) into site/starfall-vanguard/.
+# Rebuild Starfall Vanguard (a sibling checkout, or $STARFALL_DIR) into site/games/starfall-vanguard/.
 # Run this whenever the game changes and you want the website copy updated.
 # The game builds with a RELATIVE base (vite.config.ts: base: './'), so unlike
 # Slither Orbit it needs no path patching — it works at any subpath as-is.
@@ -23,13 +23,13 @@ python3 - "$TMP/starfall-vanguard/index.html" <<'PY'
 import sys
 p = sys.argv[1]
 html = open(p).read()
-extra = '''    <link rel="canonical" href="https://staycove.studio/starfall-vanguard/" />
+extra = '''    <link rel="canonical" href="https://staycove.studio/games/starfall-vanguard/" />
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Starfall Vanguard — play in your browser" />
     <meta property="og:description" content="A vertical-scrolling arcade shoot-'em-up with a deep modular ship editor. Three stages, multi-phase bosses, and an endless survival mode." />
-    <meta property="og:url" content="https://staycove.studio/starfall-vanguard/" />
+    <meta property="og:url" content="https://staycove.studio/games/starfall-vanguard/" />
     <meta property="og:image" content="https://staycove.studio/assets/og-starfall.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -46,12 +46,13 @@ PY
 # Carry over the hand-written privacy page, which lives inside the game's directory
 # and is not produced by the build. This is its only copy, so refuse to continue
 # without it rather than silently dropping a page the store listings link to.
-if [ ! -d "$SITE/starfall-vanguard/privacy" ]; then
-  echo "error: $SITE/starfall-vanguard/privacy is missing; refusing to overwrite the site copy" >&2
+if [ ! -d "$SITE/games/starfall-vanguard/privacy" ]; then
+  echo "error: $SITE/games/starfall-vanguard/privacy is missing; refusing to overwrite the site copy" >&2
   exit 1
 fi
-cp -R "$SITE/starfall-vanguard/privacy" "$TMP/starfall-vanguard/privacy"
+cp -R "$SITE/games/starfall-vanguard/privacy" "$TMP/starfall-vanguard/privacy"
 
-rm -rf "$SITE/starfall-vanguard"
-mv "$TMP/starfall-vanguard" "$SITE/starfall-vanguard"
-echo "Updated $SITE/starfall-vanguard"
+mkdir -p "$SITE/games"
+rm -rf "$SITE/games/starfall-vanguard"
+mv "$TMP/starfall-vanguard" "$SITE/games/starfall-vanguard"
+echo "Updated $SITE/games/starfall-vanguard"
