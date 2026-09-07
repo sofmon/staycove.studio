@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stay Cove Studio</title>
-  <meta name="description" content="Stay Cove Studio — a family-owned game studio connecting children's imagination and curiosity with the craft of software. Home of Slither Orbit.">
+  <meta name="description" content="Stay Cove Studio — a family-owned game studio connecting children's imagination and curiosity with the craft of software. Home of Slither Orbit and Starfall Vanguard.">
   <link rel="canonical" href="https://staycove.studio/">
   <meta name="theme-color" content="#0c1124">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
@@ -139,9 +139,15 @@
       display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;
       padding:2.75rem 2.75rem;
     }
+    .game-panel + .game-panel{margin-top:1.5rem}
+    .game-panel.reversed{grid-template-columns:auto 1fr}
     @media (max-width:47.9rem){
-      .game-panel{grid-template-columns:1fr;padding:2rem 1.5rem;text-align:center}
+      /* both selectors listed so this beats .game-panel.reversed's specificity */
+      .game-panel,.game-panel.reversed{grid-template-columns:1fr}
+      .game-panel{padding:2rem 1.5rem;text-align:center}
       .game-shot{margin:0 auto}
+      /* keep the text first on narrow screens, in both panel directions */
+      .game-panel.reversed .game-shot{order:2}
     }
     .game-panel h3{
       font-family:'Cinzel',serif;font-weight:700;
@@ -242,7 +248,7 @@
 
   <section id="games" aria-labelledby="games-h">
     <div class="wrap">
-      <h2 id="games-h" class="rule-heading">Our First Game</h2>
+      <h2 id="games-h" class="rule-heading">Our Games</h2>
       <div class="game-panel">
         <div>
           <h3>Slither Orbit</h3>
@@ -255,7 +261,7 @@
             <li>Fully offline — plays anywhere</li>
             <li>No ads, no tracking, no in-app purchases</li>
           </ul>
-          <a class="play-btn" href="/play/">Play in your browser</a>
+          <a class="play-btn" href="/play/">Play in your browser<span class="sr-only"> — Slither Orbit</span></a>
           <div class="store-row">
             <span class="store-pill"><b>App Store</b> — coming soon</span>
             <span class="store-pill"><b>Google Play</b> — coming soon</span>
@@ -263,6 +269,29 @@
         </div>
         <div class="game-shot">
           <img src="/assets/slither-orbit.jpg" width="640" height="1080" alt="Slither Orbit gameplay: a glowing snake trail curving through a dark circular arena." loading="lazy">
+        </div>
+      </div>
+
+      <div class="game-panel reversed">
+        <div class="game-shot">
+          <img src="/assets/starfall-vanguard.jpg" width="640" height="1137" alt="Starfall Vanguard gameplay: a pixel-art starfighter facing two formations of enemy ships over a purple nebula." loading="lazy">
+        </div>
+        <div>
+          <h3>Starfall Vanguard</h3>
+          <p class="sub">Defend the inner colonies</p>
+          <p class="desc">A vertical-scrolling arcade shoot-'em-up in the spirit of the
+             coin-op classics. Three stages, each ending in a multi-phase boss, plus an
+             endless survival run — and a shop where every credit buys a real trade-off.</p>
+          <ul class="game-points">
+            <li>Build your ship: hulls, weapons, shields and engines</li>
+            <li>Fully offline — plays anywhere</li>
+            <li>No ads, no tracking, no in-app purchases</li>
+          </ul>
+          <a class="play-btn" href="/starfall-vanguard/">Play in your browser<span class="sr-only"> — Starfall Vanguard</span></a>
+          <div class="store-row">
+            <span class="store-pill"><b>App Store</b> — coming soon</span>
+            <span class="store-pill"><b>Google Play</b> — coming soon</span>
+          </div>
         </div>
       </div>
     </div>
@@ -284,7 +313,9 @@
     <div>
       <a href="mailto:hello@staycove.studio">hello@staycove.studio</a>
       <span class="sep">·</span>
-      <a href="/slither-orbit/privacy/">Slither Orbit privacy policy</a>
+      <a href="/slither-orbit/privacy/">Slither Orbit privacy</a>
+      <span class="sep">·</span>
+      <a href="/starfall-vanguard/privacy/">Starfall Vanguard privacy</a>
       <span class="sep">·</span>
       <a href="https://www.sofmon.com" rel="noopener">sofmon.com</a>
     </div>
