@@ -55,6 +55,16 @@ for i in m['icons']:
 json.dump(m, open(p, 'w'), indent=2)
 EOF
 
+# Carry over the hand-written privacy page, which lives inside the game's directory
+# and is not produced by the build. This is its only copy and the swap below deletes
+# the directory, so refuse to continue without it rather than silently dropping a
+# page the store listings link to.
+if [ ! -d "$SITE/games/slither-orbit/privacy" ]; then
+  echo "error: $SITE/games/slither-orbit/privacy is missing; refusing to overwrite the site copy" >&2
+  exit 1
+fi
+cp -R "$SITE/games/slither-orbit/privacy" "$TMP/slither-orbit/privacy"
+
 mkdir -p "$SITE/games"
 rm -rf "$SITE/games/slither-orbit"
 mv "$TMP/slither-orbit" "$SITE/games/slither-orbit"
