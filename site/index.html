@@ -173,7 +173,12 @@
     @media (max-width:25rem){
       .play-btn{font-size:.85rem;letter-spacing:.08em;padding:.85rem 1.2rem}
     }
-    .store-row{margin-top:1.4rem;display:flex;gap:.75rem;flex-wrap:wrap}
+    .store-row{margin-top:1.4rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+    /* Apple's official badge: shown unmodified, at its minimum 40px height,
+       with the required clear space coming from the row gap. */
+    .store-badge{display:inline-block;line-height:0;border-radius:.5rem}
+    .store-badge img{height:40px;width:auto;display:block}
+    .store-badge:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
     @media (max-width:47.9rem){.store-row{justify-content:center}}
     .store-pill{
       border:1px solid rgba(170,178,201,.3);border-radius:2rem;
@@ -264,7 +269,9 @@
           </ul>
           <a class="play-btn" href="/games/slither-orbit/">Play in your browser<span class="sr-only"> — Slither Orbit</span></a>
           <div class="store-row">
-            <span class="store-pill"><b>App Store</b> — coming soon</span>
+            <a class="store-badge" href="https://apps.apple.com/app/slither-orbit/id6829711556" rel="noopener">
+              <img src="/assets/app-store-badge.svg" width="120" height="40" alt="Download Slither Orbit on the App Store">
+            </a>
             <span class="store-pill"><b>Google Play</b> — coming soon</span>
           </div>
         </div>
