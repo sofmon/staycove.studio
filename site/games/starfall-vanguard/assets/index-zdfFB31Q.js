@@ -1,2 +1,0 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./web-DYJuMbic.js","./index-CEcINbWg.js"])))=>i.map(i=>d[i]);
-import{_ as r}from"./index-I1_Wr5kv.js";import{r as t}from"./index-CEcINbWg.js";import"./phaser-DXXWZowi.js";const m=t("ScreenOrientation",{web:()=>r(()=>import("./web-DYJuMbic.js"),__vite__mapDeps([0,1]),import.meta.url).then(e=>new e.ScreenOrientationWeb)});export{m as ScreenOrientation};
