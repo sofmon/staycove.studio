@@ -13,8 +13,9 @@ The website for **Stay Cove Studio** — deployed at https://staycove.studio.
 | `site/play/`, `site/starfall-vanguard/`, `site/slither-orbit/privacy/` | Redirect stubs for the games' previous URLs — see "Moved URLs" below. Do not delete. |
 | `site/assets/` | Optimized images and self-hosted fonts (no Google Fonts requests — the site makes zero third-party calls, matching the "no tracking" brand). |
 | `staycove-*.png`, `staycovestudio.png` | Source brand art (kept out of the deployed site; web-optimized copies live in `site/assets/`). |
-| `build-play.sh` | Rebuilds Slither Orbit into `site/play/` after game changes. |
-| `build-starfall.sh` | Rebuilds Starfall Vanguard into `site/starfall-vanguard/` after game changes. |
+| `build-play.sh` | Rebuilds Slither Orbit into `site/games/slither-orbit/` after game changes. |
+| `build-starfall.sh` | Rebuilds Starfall Vanguard into `site/games/starfall-vanguard/` after game changes. |
+| `stamp-sitemap.py` | Sets one `sitemap.xml` entry's `<lastmod>`. Called by the build scripts; see below. |
 
 ## Deploying
 
@@ -46,6 +47,26 @@ the hand-written privacy page.
 
 Neither script touches the game repos' own `dist/` folders (which Capacitor syncs
 into the iOS/Android projects).
+
+### Sitemap dates
+
+Each build script stamps its game's `<lastmod>` in `site/sitemap.xml` by calling
+`stamp-sitemap.py`, so the dates stop drifting away from reality. It stamps only
+when the rebuild actually changed bytes: the script hashes the deployed tree
+before and after, and a rebuild that produces an identical tree leaves the date
+alone rather than claiming a change that did not happen.
+
+Because Vite's filename hashes are content-derived, that comparison also doubles
+as a reproducibility check. If a rebuild from an unchanged commit reports a
+change, something non-deterministic went into it — most likely uncommitted edits
+in the game checkout. Check `git status` there before deploying.
+
+The home page and the two privacy pages are not built, so their dates are set by
+hand when their content changes:
+
+```bash
+./stamp-sitemap.py site/sitemap.xml https://staycove.studio/
+```
 
 ## Moved URLs
 

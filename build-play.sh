@@ -65,7 +65,22 @@ if [ ! -d "$SITE/games/slither-orbit/privacy" ]; then
 fi
 cp -R "$SITE/games/slither-orbit/privacy" "$TMP/slither-orbit/privacy"
 
+# A rebuild that produces identical bytes is not a change, and stamping the
+# sitemap for one would tell crawlers something untrue. Vite's filename hashes
+# are content-derived, so comparing the two trees is enough to tell them apart.
+tree_hash() {
+  [ -d "$1" ] || { echo absent; return; }
+  (cd "$1" && find . -type f -exec shasum -a 256 {} + | sort | shasum -a 256 | cut -d' ' -f1)
+}
+before="$(tree_hash "$SITE/games/slither-orbit")"
+
 mkdir -p "$SITE/games"
 rm -rf "$SITE/games/slither-orbit"
 mv "$TMP/slither-orbit" "$SITE/games/slither-orbit"
 echo "Updated $SITE/games/slither-orbit"
+
+if [ "$before" = "$(tree_hash "$SITE/games/slither-orbit")" ]; then
+  echo "sitemap: /games/slither-orbit/ is byte-identical, date left alone"
+else
+  python3 "$ROOT/stamp-sitemap.py" "$SITE/sitemap.xml" "https://staycove.studio/games/slither-orbit/"
+fi

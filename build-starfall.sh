@@ -52,7 +52,22 @@ if [ ! -d "$SITE/games/starfall-vanguard/privacy" ]; then
 fi
 cp -R "$SITE/games/starfall-vanguard/privacy" "$TMP/starfall-vanguard/privacy"
 
+# A rebuild that produces identical bytes is not a change, and stamping the
+# sitemap for one would tell crawlers something untrue. Vite's filename hashes
+# are content-derived, so comparing the two trees is enough to tell them apart.
+tree_hash() {
+  [ -d "$1" ] || { echo absent; return; }
+  (cd "$1" && find . -type f -exec shasum -a 256 {} + | sort | shasum -a 256 | cut -d' ' -f1)
+}
+before="$(tree_hash "$SITE/games/starfall-vanguard")"
+
 mkdir -p "$SITE/games"
 rm -rf "$SITE/games/starfall-vanguard"
 mv "$TMP/starfall-vanguard" "$SITE/games/starfall-vanguard"
 echo "Updated $SITE/games/starfall-vanguard"
+
+if [ "$before" = "$(tree_hash "$SITE/games/starfall-vanguard")" ]; then
+  echo "sitemap: /games/starfall-vanguard/ is byte-identical, date left alone"
+else
+  python3 "$ROOT/stamp-sitemap.py" "$SITE/sitemap.xml" "https://staycove.studio/games/starfall-vanguard/"
+fi
