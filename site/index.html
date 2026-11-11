@@ -174,10 +174,15 @@
       .play-btn{font-size:.85rem;letter-spacing:.08em;padding:.85rem 1.2rem}
     }
     .store-row{margin-top:1.4rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
-    /* Apple's official badge: shown unmodified, at its minimum 40px height,
-       with the required clear space coming from the row gap. */
+    /* Both badges are the stores' official artwork, unmodified. They are not
+       comparable sizes as shipped: Apple's SVG is trimmed to the button, so
+       40px height IS the button, while Google's PNG bakes 41px of transparent
+       clear space into a 646x250 canvas, leaving only 67.2% of its height as
+       button. Rendering Google's at 60px makes its button 40px as well, and
+       that baked-in padding is the clear space Google's guidelines require. */
     .store-badge{display:inline-block;line-height:0;border-radius:.5rem}
     .store-badge img{height:40px;width:auto;display:block}
+    .store-badge--play img{height:60px}
     .store-badge:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
     @media (max-width:47.9rem){.store-row{justify-content:center}}
     .store-pill{
@@ -272,7 +277,9 @@
             <a class="store-badge" href="https://apps.apple.com/app/slither-orbit/id6829711556" rel="noopener">
               <img src="/assets/app-store-badge.svg" width="120" height="40" alt="Download Slither Orbit on the App Store">
             </a>
-            <span class="store-pill"><b>Google Play</b> — coming soon</span>
+            <a class="store-badge store-badge--play" href="https://play.google.com/store/apps/details?id=studio.staycove.slitherorbit" rel="noopener">
+              <img src="/assets/google-play-badge.png" width="155" height="60" alt="Get Slither Orbit on Google Play">
+            </a>
           </div>
         </div>
         <div class="game-shot">
