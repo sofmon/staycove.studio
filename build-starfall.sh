@@ -28,7 +28,7 @@ extra = '''    <link rel="canonical" href="https://staycove.studio/games/starfal
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Starfall Vanguard — play in your browser" />
-    <meta property="og:description" content="A vertical-scrolling arcade shoot-'em-up with a deep modular ship editor. Three stages, multi-phase bosses, and an endless survival mode." />
+    <meta property="og:description" content="A vertical-scrolling arcade shoot-'em-up with a deep modular ship editor. Ten stages across six worlds, multi-phase bosses, and an endless survival mode." />
     <meta property="og:url" content="https://staycove.studio/games/starfall-vanguard/" />
     <meta property="og:image" content="https://staycove.studio/assets/og-starfall.jpg" />
     <meta property="og:image:width" content="1200" />
